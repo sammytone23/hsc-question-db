@@ -1,2 +1,2 @@
 # hsc-question-db
-henlo this is the placeholder readme
+This will be a website to allow for the easy accessing of questions from past HSC Software Design and Development exams, for teachers and students alike.
