@@ -25,7 +25,7 @@ def apology(message, code=400):
 						 ("%", "~p"), ("#", "~h"), ("/", "~s"), ("\"", "''")]:
 			s = s.replace(old, new)
 		return s
-	return render_template("apology.html", apology_message=f'{code}, 'escape(message)), code
+	return render_template("apology.html", apology_message=f'{code}, '+escape(message)), code
 
 @app.route('/reset_web_db')
 def reset_people():
@@ -36,7 +36,8 @@ def reset_people():
 	except:
 		web_db=SQL('web_db.db')
 	web_db.execute('CREATE TABLE people(id INTEGER PRIMARY KEY AUTOINCREMENT, name VARCHAR NOT NULL, isTeacher BOOLEAN, classCode VARCHAR NOT NULL, UNIQUE(classCode));')
-	web_db.execute('CREATE TABLE questions(id INTEGER PRIMARY KEY AUTOINCREMENT, title VARCHAR NOT NULL, isMult BOOLEAN, multAns VARCHAR NOT NULL, hasChild BOOLEAN, hasParent BOOLEAN);')
+	web_db.execute('CREATE TABLE classes(id INTEGER PRIMARY KEY AUTOINCREMENT, class )')
+	web_db.execute('CREATE TABLE questions(id INTEGER PRIMARY KEY AUTOINCREMENT, title VARCHAR NOT NULL, isMult BOOLEAN, multAns VARCHAR NOT NULL, hasChild BOOLEAN, hasParent BOOLEAN, hasImage BOOLEAN);')
 
 
 @app.after_request

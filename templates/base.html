@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<head>
+	<title> this is a base template </title>
+	<link rel="stylesheet" type="text/css" href="/static/main.css">
+</head>
+<body>
+	<div id="header">
+		<h1>{{heading}}</h1>
+		<ul class="navbar">
+			{%- for key in pages.keys() %}
+				<li class="nav-item"><a href="{{ pages[key] }}">{{ key }}</a></li>
+			{% endfor %}
+		</ul>
+	</div>
+	<div id="content">
+		{% block content %}{% endblock %}
+	</div>
+</body>
