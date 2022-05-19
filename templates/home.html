@@ -2,7 +2,12 @@
 
 {% block content %}
 	<h1> This is a home page what where explaining happens </h1>
-	<form action="/add_thing" method="post" id="form">
+	{% if session['reply'] -%}
+		<div class='b'>
+			<b>{{ session['reply'] }}</b>
+		</div>
+	{% endif %}
+	<form action="/is_correct" method="post" id="form">
 		<div class="form-div">
 			<input type="text" name="thing" class="in-form">
 		</div>

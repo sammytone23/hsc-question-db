@@ -55,10 +55,21 @@ h1{
 .in-form{
 	background: var(--alt-bg-color);
 	font-size: 2em;
-	padding: 5px;
+	padding: 10px;
 	color: var(--text-color)
 }
 
 .form-div{
 	margin: 15px;
+}
+
+b{
+	border: 1px solid var(--alt-bg-color);
+	color: var(--text-bold);
+	font-weight: bold;
+	padding: 5px;
+}
+.b{
+	margin: 5px;
+	margin-top: 15px;
 }

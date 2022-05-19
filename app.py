@@ -97,9 +97,27 @@ def login():
 	else:
 		pass
 
+@app.route('/is_correct', methods=['POST'])
+def is_correct():
+	if not request.form.get('thing'):
+		return apology("must input thing", code=403)
+	if request.form.get('thing')=='correct':
+		session.pop('reply', None)
+		session['pages']['win']='/win'
+		session['win']=True
+	else:
+		session['reply']='that input is not correct'
+	return redirect('/')
+
+@app.route('/win')
+def win():
+	if 'win' not in session.keys() or not session['win']:
+		return redirect('/')
+	return render_template('win.html', heading='You Won!', session=session)
+
 @app.route('/add_thing', methods=['GET', 'POST'])
 def add_thing():
-	print('here')
+	# print('here')
 	if request.method=='POST':
 		if not request.form.get('thing'):
 			return apology("must input thing", code=403)
