@@ -1,6 +1,6 @@
 #main python app
 
-from flask import Flask, render_template, redirect
+from flask import Flask, render_template, redirect, session
 import random
 from flask_session import Session
 from db import SQL
@@ -12,6 +12,7 @@ app.config["SESSION_TYPE"] = "filesystem"
 Session(app)
 # web_db=SQL('web_db.db')
 
+session['pages']={'hello':'/','world':'/'}
 
 def apology(message, code=400):
 	"""Render message as an apology to user."""
@@ -25,8 +26,9 @@ def apology(message, code=400):
 						 ("%", "~p"), ("#", "~h"), ("/", "~s"), ("\"", "''")]:
 			s = s.replace(old, new)
 		return s
-	return render_template("apology.html", apology_message=f'{code}, '+escape(message)), code
+	return render_template("apology.html", apology_message=f'{code}, '+escape(message), heading=code), code
 
+"""
 @app.route('/reset_web_db')
 def reset_people():
 	try open('web_db.db'):
@@ -38,7 +40,7 @@ def reset_people():
 	web_db.execute('CREATE TABLE people(id INTEGER PRIMARY KEY AUTOINCREMENT, name VARCHAR NOT NULL, isTeacher BOOLEAN, classCode VARCHAR NOT NULL, UNIQUE(classCode));')
 	web_db.execute('CREATE TABLE classes(id INTEGER PRIMARY KEY AUTOINCREMENT, class )')
 	web_db.execute('CREATE TABLE questions(id INTEGER PRIMARY KEY AUTOINCREMENT, title VARCHAR NOT NULL, isMult BOOLEAN, multAns VARCHAR NOT NULL, hasChild BOOLEAN, hasParent BOOLEAN, hasImage BOOLEAN);')
-
+"""
 
 @app.after_request
 def after_request(response):
@@ -50,10 +52,15 @@ def after_request(response):
 
 @app.route("/", methods=['GET'])
 def hello_world():
-	"""Home page"""UNIQUE
+	"""Home page"""
 
-	pages={'hello':'/','world':'/'}
+	# pages={'hello':'/','world':'/'}
 	return render_template('home.html', heading="This is a substituted heading", pages=pages)
+
+@app.route('/apology')
+def apologise():
+	return apology
+
 
 @app.route("/register", methods=['GET','POST'])
 def login():
