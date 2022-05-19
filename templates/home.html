@@ -1,5 +1,14 @@
 {% extends "base.html" %}
 
 {% block content %}
-	<p> This is a home page what where explaining happens </p>
+	<h1> This is a home page what where explaining happens </h1>
+	<form action="/add_thing" method="post" id="form">
+		<div class="form-div">
+			<input type="text" name="thing" class="in-form">
+		</div>
+		<div class="form-div">
+			<button type="submit" class="in-form">submit</button>
+		</div>
+	</form>
+
 {% endblock %}

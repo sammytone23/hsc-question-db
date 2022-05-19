@@ -1,6 +1,6 @@
 #main python app
 
-from flask import Flask, render_template, redirect, session
+from flask import Flask, render_template, redirect, session, request
 import random
 from flask_session import Session
 from db import SQL
@@ -12,7 +12,6 @@ app.config["SESSION_TYPE"] = "filesystem"
 Session(app)
 # web_db=SQL('web_db.db')
 
-session['pages']={'hello':'/','world':'/'}
 
 def apology(message, code=400):
 	"""Render message as an apology to user."""
@@ -26,7 +25,7 @@ def apology(message, code=400):
 						 ("%", "~p"), ("#", "~h"), ("/", "~s"), ("\"", "''")]:
 			s = s.replace(old, new)
 		return s
-	return render_template("apology.html", apology_message=f'{code}, '+escape(message), heading=code), code
+	return render_template("apology.html", apology_message=f'{code}, '+escape(message), heading=code, session=session), code
 
 """
 @app.route('/reset_web_db')
@@ -50,16 +49,24 @@ def after_request(response):
 	response.headers["Pragma"] = "no-cache"
 	return response
 
+@app.route('/reset')
+def reset_session():
+	session.clear()
+	return redirect('/')
+
 @app.route("/", methods=['GET'])
 def hello_world():
 	"""Home page"""
+	if not ('pages' in session.keys()):
+		session['pages']={'home':'/','reset session':'/reset'}
 
 	# pages={'hello':'/','world':'/'}
-	return render_template('home.html', heading="This is a substituted heading", pages=pages)
+	# print(session)
+	return render_template('home.html', heading="This is a substituted heading", session=session)
 
 @app.route('/apology')
 def apologise():
-	return apology
+	return apology('get apologised')
 
 
 @app.route("/register", methods=['GET','POST'])
@@ -89,6 +96,17 @@ def login():
 
 	else:
 		pass
+
+@app.route('/add_thing', methods=['GET', 'POST'])
+def add_thing():
+	print('here')
+	if request.method=='POST':
+		if not request.form.get('thing'):
+			return apology("must input thing", code=403)
+		session['pages'][request.form.get('thing')]='/'
+	
+	return redirect('/')
+
 
 if __name__ == '__main__':
 	app.run(host='0.0.0.0', port=5000)

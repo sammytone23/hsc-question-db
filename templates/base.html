@@ -7,15 +7,9 @@
 	<div id="header">
 		<h1>{{heading}}</h1>
 		<ul class="navbar">
-			{% if pages -%}
-				{%- for key in pages.keys() %}
-					<li class="nav-item"><a href="{{ pages[key] }}">{{ key }}</a></li>
-				{% endfor %}
-			{% else -%}
-				{%- for key in session['pages'].keys() %}
-					<li class="nav-item"><a href="{{ pages[key] }}">{{ key }}</a></li>
-				{% endfor %}
-			{% endif %}
+			{%- for key in session['pages'].keys() %}
+				<li class="nav-item"><a href="{{ session['pages'][key] }}">{{ key }}</a></li>
+			{% endfor %}
 		</ul>
 	</div>
 	<div id="content">
