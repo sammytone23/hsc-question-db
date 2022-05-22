@@ -1,0 +1,6 @@
+{
+	"logins":
+	[
+		{"user_id":0,"username":"user1","password":"123456","privileges":"admin"}
+	]
+}
