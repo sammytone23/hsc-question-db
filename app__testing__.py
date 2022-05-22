@@ -1,10 +1,9 @@
 #main python app
 
-from flask import Flask, render_template, redirect, session, request
-import random
+from flask import Flask, render_template, redirect, session, request, url_for
 from flask_session import Session
 from db import SQL
-import json
+import random, json
 
 app = Flask(__name__, template_folder='templates', static_folder='static')
 app.config["TEMPLATES_AUTO_RELOAD"] = True
@@ -39,13 +38,14 @@ def after_request(response):
 @app.route('/reset')
 def reset_session():
 	session.clear()
+	session['pages']={'home':'/','reset session':'/reset'}
 	return redirect('/')
 
 @app.route("/")
 def home():
 	"""Home page"""
 	if not ('pages' in session.keys()):
-		session['pages']={'home':'/','reset session':'/reset','add':'/add_page'}
+		session['pages']={'home':'/','reset session':'/reset'}
 
 	# pages={'hello':'/','world':'/'}
 	# print(session)
@@ -53,48 +53,58 @@ def home():
 
 @app.route('/login', methods=['GET','POST'])
 def login():
-    if request.method=="POST":
+	if request.method=="POST":
 
-        if not request.form.get('username'):
-            return apology('must provide username', 403)
-        username=request.form.get('username')
-        if not request.form.get('password'):
-            return apology('must provide password', 403)
-        password=request.form.get('password')
+		if not request.form.get('username'):
+			return apology('must provide username', 403)
+		username=request.form.get('username')
 
-        with open('static/fake_db.json') as f:
-            fake_db=json.load(f)
-            for user in fake_db['logins']:
-                if user['username']==username:
-                    if user['password']==password:
-                        session['user']=user['user_id']
-                        return render_template('logged_in.html', heading='Logged in', session=session)
-                    return apology('password incorrect', 403)
-            return apology('user does not exist', 403)
+		if not request.form.get('password'):
+			return apology('must provide password', 403)
+		password=request.form.get('password')
 
-    return render_template('login.html', heading='login', session=session)
+		with open('static/fake_db.json') as f:
+			fake_db=json.load(f)
+		for user in fake_db['logins']:
+			if user['username']==username:
+				if user['password']==password:
+					session['user']=user['user_id']
+					return render_template('logged_in.html', heading='Logged in', session=session)
+				return apology('password incorrect', 403)
+		return apology('user does not exist', 403)
 
+	return render_template('login.html', heading='login', session=session)
 
+def create_user(fake_db):
+	user_id=fake_db['logins'][-1]['user_id']+1
+	
+	if not request.form.get('class_code'):
+		class_code_unique=False
+		while not class_code_unique:
+			class_code=''.join([random.choice('ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789') for i in range(random.randint(4,7))])
+			found=False
+			for p,class_group in enumerate(fake_db['classes']):
+				if class_group['class']==class_code:
+					found=True
+			class_code_unique=(not found)
+		fake_db['classes'].append({'class_code':class_code,'users':[user_id]})
 
-
-"""
-!!! Testing pages, leave commented out !!!
-
-def make_page(route, title="Title", methods=['GET'], file=None, **kwargs):
-    if request.method not in methods:
-        return apology("method not allowed", 403)
-    if not file:
-        return render_template()
-
-@app.route('/apology')
-def apologise():
-	return apology('get apologised')
+	else:
+		class_code=request.form.get('class_code')
+		for p,class_group in enumerate(fake_db['classes']):
+			if class_group['class']==class_code:
+				fake_db['classes'][p]['users'].append(user_id)
+	
+	user={"user_id":user_id,"username":request.form.get('username'),"password":request.form.get('password'),"privileges":request.form.get('user-type'),"class_code":class_code}
+	fake_db['logins'].append(user)
+	
+	return fake_db,user_id
 
 @app.route("/register", methods=['GET','POST'])
-def login():
+def register():
 
 	# Forget any user_id
-	session.clear()
+	reset_session()
 
 	if request.method=='POST':
 		 # Ensure username was submitted
@@ -113,10 +123,50 @@ def login():
 		elif not request.form.get("confirmation")==request.form.get("password"):
 			return apology("password and confirmation must match", 403)
 
-		\""" < add person to db here >\"""
+		with open('static/fake_db.json') as f:
+			fake_db=json.load(f)
 
-	else:
-		pass
+		for user in fake_db['logins']:
+			if request.form.get('username')==user['username']:
+				return apology('username taken', 403)
+		
+		fake_db,user_id=create_user(fake_db)
+		session['user']=user_id
+		with open('static/fake_db.json','w') as f:
+			json_object=json.dumps(fake_db)
+			f.write(json_object)
+
+		return render_template('registered.html', heading="Registered", session=session)
+
+	return render_template('register.html', heading='Register', session=session)
+
+@app.route('/question/<question_id>', methods=['GET','POST'])
+def question(question_id):
+	with open('static/fake_db.json') as f:
+		fake_db=json.load(f)
+
+	question=fake_db['questions'][int(question_id)]
+	return render_template('question.html',heading='Question',session=session,question=question)
+
+@app.route('/submit_question/<question_id>', methods=['POST'])
+def submit_question(question_id):
+	return request.form
+
+
+
+"""
+!!! Testing pages, leave commented out !!!
+
+def make_page(route, title="Title", methods=['GET'], file=None, **kwargs):
+	if request.method not in methods:
+		return apology("method not allowed", 403)
+	if not file:
+		return render_template()
+
+@app.route('/apology')
+def apologise():
+	return apology('get apologised')
+
 
 @app.route('/is_correct', methods=['POST'])
 def is_correct():

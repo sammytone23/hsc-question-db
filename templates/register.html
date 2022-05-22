@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+	<form action="/register" method="post" id="form">
+		<div class="form-div">
+			<input type="text" name="username" class="in-form" placeholder="Username">
+		</div>
+		<div class="form-div">
+			<input type="password" name="password" class="in-form" placeholder="Password">
+		</div>
+		<div class="form-div">
+			<input type="password" name="confirmation" class="in-form" placeholder="Confirmation">
+		</div>
+		<div class="form-div">
+			<p class='form-description'>Are you a Teacher or a Student?</p>
+			<select name="user-type" class="form-select">
+				<option selected="selected" class="form-select-option" value="student">Student</option>
+				<option class="form-select-option" value="teacher">Teacher</option>
+			</select>
+		</div>
+		<div class="form-div">
+			<input type="text" name="class_code" placeholder="Class code">
+		</div>
+		<div class="form-div">
+			<button type="submit" class="in-form">Register</button>
+		</div>
+	</form>
+{% endblock %}

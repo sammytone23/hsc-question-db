@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+	<form action="/submit_question/{{ question['question_id'] }}" method="post" id="form">
+		<p class="question-text">{{ question['question'] }}</p>
+		{% if question['img'] %}
+			<div class="form-div">
+				<img src="{{ url_for('static', filename='images/'+question['img']) }}" class="question-img">
+			</div>
+		{% endif %}
+		{% if question['multiple_choice'] %}
+			{% for p,answer in enumerate(random.shuffle(question['answers'])) %}
+				<div class="form-div">
+					<input type="radio" name="answer" class="multiple-choice-button" value="{{ p }}"><p class="multiple-choice-text">{{ answer }}</p>
+				</div>
+			{% endfor %}
+		{% else %}
+			<div class="form-div">
+				<input type="text" name="answer" class="short-answer">
+			</div>
+		{% endif %}
+		<button type="submit">Submit</button>
+	</form>
+{% endblock %}

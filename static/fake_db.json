@@ -1,6 +1,51 @@
 {
-	"logins":
-	[
-		{"user_id":0,"username":"user1","password":"123456","privileges":"admin"}
-	]
+	"logins": [{
+		"user_id": 0,
+		"username": "user1",
+		"password": "123456",
+		"privileges": "admin",
+		"class": 0
+	}, {
+		"user_id": 1,
+		"username": "user2",
+		"password": "123456",
+		"privileges": "teacher",
+		"class": "08P9FJ"
+	}, {
+		"user_id": 2,
+		"username": "user3",
+		"password": "123456",
+		"privileges": "student",
+		"class": "08P9FJ"
+	}, {
+		"user_id": 3,
+		"username": "hippity_hoppity_user_not_found_detected_on_property",
+		"password": "thisisasecurepassword",
+		"privileges": "student",
+		"class_code": "A5JSPUN"
+	}],
+	"classes": [{
+		"class": "08P9FJ",
+		"users": [1, 2]
+	}, {
+		"class_code": "A5JSPUN",
+		"users": [3]
+	}],
+	"questions": [{
+		"question_id": 0,
+		"question": "What is 3+3!",
+		"multiple_choice": 1,
+		"answer": ["5", "6", "8", "9"],
+		"marks": 1,
+		"img": 0,
+		"tags": ["arithmetic", "multiple_choice"]
+	}, {
+		"question_id": 1,
+		"question": "How are you enjoying this website?",
+		"multiple_choice": 0,
+		"answer": "up to 3 marks, 0 for a negative opinion, to 3 for a glowing opinion",
+		"marks": 3,
+		"img": "pls-give-me-good-marks.jpg",
+		"tags": ["opinion", "short_answer"]
+	}]
 }
