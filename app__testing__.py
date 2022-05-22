@@ -146,6 +146,8 @@ def question(question_id):
 		fake_db=json.load(f)
 
 	question=fake_db['questions'][int(question_id)]
+	if question['multiple_choice']:
+		question['answer']={chr(ord('a')+p):answer for p,answer in enumerate(question['answer'])}
 	return render_template('question.html',heading='Question',session=session,question=question)
 
 @app.route('/submit_question/<question_id>', methods=['POST'])

@@ -9,9 +9,13 @@
 			</div>
 		{% endif %}
 		{% if question['multiple_choice'] %}
-			{% for p,answer in enumerate(random.shuffle(question['answers'])) %}
+			{% for key in question['answer'].keys() %}
 				<div class="form-div">
-					<input type="radio" name="answer" class="multiple-choice-button" value="{{ p }}"><p class="multiple-choice-text">{{ answer }}</p>
+					<label class="multiple_choice-text">
+						{{key}}.
+						<input type="radio" name="answer" class="multiple-choice-button" value="{{ question['answer'][key] }}">
+						{{ question['answer'][key] }}
+					</p>
 				</div>
 			{% endfor %}
 		{% else %}
