@@ -44,15 +44,11 @@ def reset_session():
 def home():
 	"""Home page"""
 	if not ('pages' in session.keys()):
-		session['pages']={'home':'/','reset session':'/reset','add':'/add_page'}
+		session['pages']={'home':'/','reset session':'/reset'}
 
 	# pages={'hello':'/','world':'/'}
 	# print(session)
 	return render_template('home.html', heading="This is a home page", session=session)
-
-@app.route('/apology')
-def apologise():
-	return apology('get apologised')
 
 if __name__ == '__main__':
 	app.run(host='0.0.0.0', port=5000)
