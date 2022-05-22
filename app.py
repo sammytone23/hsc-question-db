@@ -55,14 +55,14 @@ def reset_session():
 	return redirect('/')
 
 @app.route("/", methods=['GET'])
-def hello_world():
+def home():
 	"""Home page"""
 	if not ('pages' in session.keys()):
-		session['pages']={'home':'/','reset session':'/reset'}
+		session['pages']={'home':'/','reset session':'/reset','add':'/add_page'}
 
 	# pages={'hello':'/','world':'/'}
 	# print(session)
-	return render_template('home.html', heading="This is a substituted heading", session=session)
+	return render_template('home.html', heading="This is a home page", session=session)
 
 @app.route('/apology')
 def apologise():
@@ -115,15 +115,15 @@ def win():
 		return redirect('/')
 	return render_template('win.html', heading='You Won!', session=session)
 
-@app.route('/add_thing', methods=['GET', 'POST'])
-def add_thing():
-	# print('here')
+@app.route('/add_page', methods=['GET', 'POST'])
+def add_page():
+	print(request)
 	if request.method=='POST':
-		if not request.form.get('thing'):
-			return apology("must input thing", code=403)
-		session['pages'][request.form.get('thing')]='/'
+		if not request.form.get('page'):
+			return apology("must input page", code=403)
+		session['pages'][request.form.get('page')]='/'
 	
-	return redirect('/')
+	return render_template('add.html', heading="add a fake page", session=session)
 
 
 if __name__ == '__main__':
