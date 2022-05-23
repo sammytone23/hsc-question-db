@@ -42,7 +42,7 @@ def make_questions(number, starting_id=0):
 			question['tags'].append('short_answer')
 		has_image=random.randint(0,1)
 		if has_image:
-			question['img']='please-give-me-good-marks.jpg'
+			question['img']='pls-give-me-good-marks.jpg'
 			question['tags'].append('has_image')
 		else:
 			question['img']=0

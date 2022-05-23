@@ -28,11 +28,40 @@ def apology(message, code=400):
 	return render_template("apology.html", apology_message=f'{code}, '+escape(message), heading='Error: '+str(code), session=session), code
 
 def update_pages_list(user):
-	return {'home':'/home','logout':'/logout'}
+	pages={'home':'/home','logout':'/logout', 'random question':'/random'}
+	if user['privileges'] in ['teacher','admin']:
+		pages['question list']='/question'
+	return pages
+
+def create_user(fake_db):
+	user_id=fake_db['logins'][-1]['user_id']+1
+	
+	if not request.form.get('class_code'):
+		class_code_unique=False
+		while not class_code_unique:
+			class_code=''.join([random.choice('ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789') for i in range(random.randint(4,7))])
+			found=False
+			for p,class_group in enumerate(fake_db['classes']):
+				print(class_group)
+				if class_group['class']==class_code:
+					found=True
+			class_code_unique=(not found)
+		fake_db['classes'].append({'class':class_code,'users':[user_id]})
+
+	else:
+		class_code=request.form.get('class_code')
+		for p,class_group in enumerate(fake_db['classes']):
+			if class_group['class']==class_code:
+				fake_db['classes'][p]['users'].append(user_id)
+	
+	user={"user_id":user_id,"username":request.form.get('username'),"password":request.form.get('password'),"privileges":request.form.get('user-type'),"class":class_code}
+	fake_db['logins'].append(user)
 
 @app.before_request
 def before_request():
-	if not session['pages']:
+	try:
+		session['pages']
+	except:
 		reset_session()
 
 @app.after_request
@@ -43,6 +72,7 @@ def after_request(response):
 	response.headers["Pragma"] = "no-cache"
 	return response
 
+	
 @app.route('/reset')
 def reset_session():
 	session.clear()
@@ -90,31 +120,6 @@ def login():
 @app.route('/logout')
 def logout():
 	return redirect('/')
-
-def create_user(fake_db):
-	user_id=fake_db['logins'][-1]['user_id']+1
-	
-	if not request.form.get('class_code'):
-		class_code_unique=False
-		while not class_code_unique:
-			class_code=''.join([random.choice('ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789') for i in range(random.randint(4,7))])
-			found=False
-			for p,class_group in enumerate(fake_db['classes']):
-				print(class_group)
-				if class_group['class']==class_code:
-					found=True
-			class_code_unique=(not found)
-		fake_db['classes'].append({'class':class_code,'users':[user_id]})
-
-	else:
-		class_code=request.form.get('class_code')
-		for p,class_group in enumerate(fake_db['classes']):
-			if class_group['class']==class_code:
-				fake_db['classes'][p]['users'].append(user_id)
-	
-	user={"user_id":user_id,"username":request.form.get('username'),"password":request.form.get('password'),"privileges":request.form.get('user-type'),"class":class_code}
-	fake_db['logins'].append(user)
-	
 	return fake_db,user_id
 
 @app.route("/register", methods=['GET','POST'])
@@ -152,10 +157,17 @@ def register():
 		with open('static/fake_db.json','w') as f:
 			json_object=json.dumps(fake_db)
 			f.write(json_object)
+		session['pages']=update_pages_list(user)
 
 		return render_template('registered.html', heading="Registered", session=session)
 
 	return render_template('register.html', heading='Register', session=session)
+
+@app.route('/random')
+def random_question():
+	with open('static/fake_db.json') as f:
+		fake_db=json.load(f)
+	return redirect('/question/'+str(random.randint(0,len(fake_db['questions'])-1)))
 
 @app.route('/question')
 def find_question():
@@ -192,13 +204,13 @@ def submit_question(question_id):
 		return render_template('multiple_choice_mark.html', heading='Marks', session=session, correct=correct, correct_answer=question['correct_answer'], question_id=question_id)
 	else:
 		return render_template('short_answer_mark.html', heading='Marks', session=session, warning=False, answer=request.form.get('answer'), marking_guide=question['marking_guide'], marks=question['marks'], question_id=question_id)
-'''
+
 @app.route('/next_question', methods=['GET', 'POST'])
 def next_question():
 	if request.method=='POST':
-		if session['']
+		pass
 	return redirect('/home')
-'''
+
 def set_test(questions=[]):
 	with open('static/fake_db.json') as f:
 		fake_db=json.load(f)

@@ -35,6 +35,12 @@
 		"password": "e2",
 		"privileges": "teacher",
 		"class": "1JCQNR"
+	}, {
+		"user_id": 6,
+		"username": "hogesonline",
+		"password": "password",
+		"privileges": "teacher",
+		"class": "IK246B4"
 	}],
 	"classes": [{
 		"class": "08P9FJ",
@@ -45,6 +51,9 @@
 	}, {
 		"class": "1JCQNR",
 		"users": [4, 5]
+	}, {
+		"class": "IK246B4",
+		"users": [6]
 	}],
 	"questions": [{
 		"question_id": 0,
@@ -70,7 +79,7 @@
 		"tags": ["short_answer", "has_image"],
 		"marking_guide": "Labore est porro quisquam porro porro ut. Amet modi tempora voluptatem consectetur. Magnam neque magnam quiquia non dolor voluptatem. Sit quaerat numquam quaerat. Aliquam voluptatem dolor sit voluptatem velit. Dolore voluptatem porro dolore tempora. Magnam quisquam porro neque modi. Est amet voluptatem velit sed aliquam sed tempora.",
 		"marks": 5,
-		"img": "please-give-me-good-marks.jpg"
+		"img": "pls-give-me-good-marks.jpg"
 	}, {
 		"question_id": 3,
 		"question": "Dolore modi magnam labore labore.?",
@@ -87,7 +96,7 @@
 		"answers": ["answer 1", "answer 2", "answer 3", "answer 4", "answer 5"],
 		"correct_answer": "answer 2",
 		"marks": 1,
-		"img": "please-give-me-good-marks.jpg"
+		"img": "pls-give-me-good-marks.jpg"
 	}, {
 		"question_id": 5,
 		"question": "Ipsum eius ut etincidunt.?",
@@ -96,7 +105,7 @@
 		"answers": ["answer 1", "answer 2", "answer 3", "answer 4", "answer 5", "answer 6"],
 		"correct_answer": "answer 3",
 		"marks": 1,
-		"img": "please-give-me-good-marks.jpg"
+		"img": "pls-give-me-good-marks.jpg"
 	}, {
 		"question_id": 6,
 		"question": "Porro quaerat dolore quisquam.?",
@@ -104,7 +113,7 @@
 		"tags": ["short_answer", "has_image"],
 		"marking_guide": "Voluptatem voluptatem ipsum non velit dolorem dolore voluptatem. Ut porro amet velit labore. Etincidunt dolor ipsum eius numquam quaerat voluptatem. Ipsum voluptatem quaerat quiquia numquam non porro consectetur. Tempora eius sed magnam voluptatem modi velit. Etincidunt amet sed etincidunt magnam quaerat dolore. Est ut dolorem numquam consectetur. Voluptatem consectetur modi quiquia.",
 		"marks": 5,
-		"img": "please-give-me-good-marks.jpg"
+		"img": "pls-give-me-good-marks.jpg"
 	}, {
 		"question_id": 7,
 		"question": "Eius voluptatem porro dolorem dolor quisquam non.?",
@@ -112,7 +121,7 @@
 		"tags": ["short_answer", "has_image"],
 		"marking_guide": "Modi sed tempora dolor neque modi voluptatem magnam. Sit sed aliquam ut aliquam dolor quaerat ut. Voluptatem eius eius sed. Porro porro aliquam modi adipisci sit sit. Dolore quisquam dolore porro quiquia quisquam velit neque.",
 		"marks": 1,
-		"img": "please-give-me-good-marks.jpg"
+		"img": "pls-give-me-good-marks.jpg"
 	}, {
 		"question_id": 8,
 		"question": "Velit numquam quaerat voluptatem dolor labore quiquia.?",
@@ -121,7 +130,7 @@
 		"answers": ["answer 1", "answer 2", "answer 3", "answer 4", "answer 5", "answer 6"],
 		"correct_answer": "answer 1",
 		"marks": 1,
-		"img": "please-give-me-good-marks.jpg"
+		"img": "pls-give-me-good-marks.jpg"
 	}, {
 		"question_id": 9,
 		"question": "Magnam porro porro ut non aliquam etincidunt ut.?",
@@ -129,7 +138,7 @@
 		"tags": ["short_answer", "has_image"],
 		"marking_guide": "Dolorem ut est neque porro sed modi. Quiquia sit modi modi sed est sit. Dolor labore velit etincidunt. Quaerat consectetur ipsum ut porro dolore consectetur est. Dolorem eius quaerat eius. Est porro non quaerat est numquam. Porro adipisci quiquia sed dolorem adipisci.",
 		"marks": 3,
-		"img": "please-give-me-good-marks.jpg"
+		"img": "pls-give-me-good-marks.jpg"
 	}, {
 		"question_id": 10,
 		"question": "Quaerat non aliquam porro tempora amet ut.?",
@@ -146,6 +155,6 @@
 		"tags": ["short_answer", "has_image"],
 		"marking_guide": "Velit magnam amet sit. Aliquam quisquam quaerat sed magnam ut dolorem sed. Magnam sit numquam neque velit. Sed voluptatem eius aliquam neque. Labore dolore labore ipsum porro ipsum. Quisquam etincidunt est consectetur velit. Consectetur dolor modi est velit quiquia magnam quisquam. Numquam porro non adipisci.",
 		"marks": 1,
-		"img": "please-give-me-good-marks.jpg"
+		"img": "pls-give-me-good-marks.jpg"
 	}]
 }
