@@ -22,20 +22,36 @@
 		"username": "hippity_hoppity_user_not_found_detected_on_property",
 		"password": "thisisasecurepassword",
 		"privileges": "student",
-		"class_code": "A5JSPUN"
+		"class": "A5JSPUN"
+	}, {
+		"user_id": 4,
+		"username": "this_is_a_username",
+		"password": "aaaahhhh",
+		"privileges": "student",
+		"class": "1JCQNR"
+	}, {
+		"user_id": 5,
+		"username": "e1",
+		"password": "e2",
+		"privileges": "teacher",
+		"class": "1JCQNR"
 	}],
 	"classes": [{
 		"class": "08P9FJ",
 		"users": [1, 2]
 	}, {
-		"class_code": "A5JSPUN",
+		"class": "A5JSPUN",
 		"users": [3]
+	}, {
+		"class": "1JCQNR",
+		"users": [4, 5]
 	}],
 	"questions": [{
 		"question_id": 0,
 		"question": "What is 3+3!",
 		"multiple_choice": 1,
-		"answer": ["5", "6", "8", "9"],
+		"answers": ["5", "6", "8", "9"],
+		"correct_answer": "9",
 		"marks": 1,
 		"img": 0,
 		"tags": ["arithmetic", "multiple_choice"]
@@ -43,9 +59,93 @@
 		"question_id": 1,
 		"question": "How are you enjoying this website?",
 		"multiple_choice": 0,
-		"answer": "up to 3 marks, 0 for a negative opinion, to 3 for a glowing opinion",
+		"marking_guide": "up to 3 marks, 0 for a negative opinion, to 3 for a glowing opinion",
 		"marks": 3,
 		"img": "pls-give-me-good-marks.jpg",
 		"tags": ["opinion", "short_answer"]
+	}, {
+		"question_id": 2,
+		"question": "Velit numquam etincidunt sed quisquam quaerat.?",
+		"multiple_choice": 0,
+		"tags": ["short_answer", "has_image"],
+		"marking_guide": "Labore est porro quisquam porro porro ut. Amet modi tempora voluptatem consectetur. Magnam neque magnam quiquia non dolor voluptatem. Sit quaerat numquam quaerat. Aliquam voluptatem dolor sit voluptatem velit. Dolore voluptatem porro dolore tempora. Magnam quisquam porro neque modi. Est amet voluptatem velit sed aliquam sed tempora.",
+		"marks": 5,
+		"img": "please-give-me-good-marks.jpg"
+	}, {
+		"question_id": 3,
+		"question": "Dolore modi magnam labore labore.?",
+		"multiple_choice": 0,
+		"tags": ["short_answer"],
+		"marking_guide": "Porro quiquia adipisci aliquam non eius non. Consectetur magnam sit porro sed est numquam. Eius est neque etincidunt ut ut tempora magnam. Numquam eius magnam quaerat ut quiquia. Ut quiquia quisquam consectetur magnam est. Sit tempora tempora modi etincidunt. Velit dolorem labore sed consectetur eius quisquam.",
+		"marks": 4,
+		"img": 0
+	}, {
+		"question_id": 4,
+		"question": "Quaerat eius amet quaerat quiquia quisquam.?",
+		"multiple_choice": 1,
+		"tags": ["multiple_choice", "has_image"],
+		"answers": ["answer 1", "answer 2", "answer 3", "answer 4", "answer 5"],
+		"correct_answer": "answer 2",
+		"marks": 1,
+		"img": "please-give-me-good-marks.jpg"
+	}, {
+		"question_id": 5,
+		"question": "Ipsum eius ut etincidunt.?",
+		"multiple_choice": 1,
+		"tags": ["multiple_choice", "has_image"],
+		"answers": ["answer 1", "answer 2", "answer 3", "answer 4", "answer 5", "answer 6"],
+		"correct_answer": "answer 3",
+		"marks": 1,
+		"img": "please-give-me-good-marks.jpg"
+	}, {
+		"question_id": 6,
+		"question": "Porro quaerat dolore quisquam.?",
+		"multiple_choice": 0,
+		"tags": ["short_answer", "has_image"],
+		"marking_guide": "Voluptatem voluptatem ipsum non velit dolorem dolore voluptatem. Ut porro amet velit labore. Etincidunt dolor ipsum eius numquam quaerat voluptatem. Ipsum voluptatem quaerat quiquia numquam non porro consectetur. Tempora eius sed magnam voluptatem modi velit. Etincidunt amet sed etincidunt magnam quaerat dolore. Est ut dolorem numquam consectetur. Voluptatem consectetur modi quiquia.",
+		"marks": 5,
+		"img": "please-give-me-good-marks.jpg"
+	}, {
+		"question_id": 7,
+		"question": "Eius voluptatem porro dolorem dolor quisquam non.?",
+		"multiple_choice": 0,
+		"tags": ["short_answer", "has_image"],
+		"marking_guide": "Modi sed tempora dolor neque modi voluptatem magnam. Sit sed aliquam ut aliquam dolor quaerat ut. Voluptatem eius eius sed. Porro porro aliquam modi adipisci sit sit. Dolore quisquam dolore porro quiquia quisquam velit neque.",
+		"marks": 1,
+		"img": "please-give-me-good-marks.jpg"
+	}, {
+		"question_id": 8,
+		"question": "Velit numquam quaerat voluptatem dolor labore quiquia.?",
+		"multiple_choice": 1,
+		"tags": ["multiple_choice", "has_image"],
+		"answers": ["answer 1", "answer 2", "answer 3", "answer 4", "answer 5", "answer 6"],
+		"correct_answer": "answer 1",
+		"marks": 1,
+		"img": "please-give-me-good-marks.jpg"
+	}, {
+		"question_id": 9,
+		"question": "Magnam porro porro ut non aliquam etincidunt ut.?",
+		"multiple_choice": 0,
+		"tags": ["short_answer", "has_image"],
+		"marking_guide": "Dolorem ut est neque porro sed modi. Quiquia sit modi modi sed est sit. Dolor labore velit etincidunt. Quaerat consectetur ipsum ut porro dolore consectetur est. Dolorem eius quaerat eius. Est porro non quaerat est numquam. Porro adipisci quiquia sed dolorem adipisci.",
+		"marks": 3,
+		"img": "please-give-me-good-marks.jpg"
+	}, {
+		"question_id": 10,
+		"question": "Quaerat non aliquam porro tempora amet ut.?",
+		"multiple_choice": 1,
+		"tags": ["multiple_choice"],
+		"answers": ["answer 1", "answer 2"],
+		"correct_answer": "answer 2",
+		"marks": 1,
+		"img": 0
+	}, {
+		"question_id": 11,
+		"question": "Dolorem magnam numquam quaerat porro quiquia aliquam sed.?",
+		"multiple_choice": 0,
+		"tags": ["short_answer", "has_image"],
+		"marking_guide": "Velit magnam amet sit. Aliquam quisquam quaerat sed magnam ut dolorem sed. Magnam sit numquam neque velit. Sed voluptatem eius aliquam neque. Labore dolore labore ipsum porro ipsum. Quisquam etincidunt est consectetur velit. Consectetur dolor modi est velit quiquia magnam quisquam. Numquam porro non adipisci.",
+		"marks": 1,
+		"img": "please-give-me-good-marks.jpg"
 	}]
 }

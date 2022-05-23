@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block content %}
+	<p class="multiple-choice-{{ correct }}"> You got the question {{ correct }}. The correct answer was {{ correct_answer }}</p>
+	<form action="/next_question" method="post">
+		<input type="hidden" name="from" value="{{question_id}}">
+		<button type="submit">Next</button>
+	</form>
+{% endblock %}

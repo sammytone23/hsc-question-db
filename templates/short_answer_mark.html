@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+	{% if warning %}
+		<p class="warning">{{ warning }}</p>
+	{% endif %}
+	<p class="short-answer-title">Your answer</p>
+	<p class="short-answer-text">{{ answer }}</p>
+	<p class="short-answer-title">The marking guide</p>
+	<p class="short-answer-text">{{ marking_guide }}</p>
+	<form action="/next_question" method="post" id="form">
+		<input type="hidden" name="from" value="{{question_id}}">
+		<input type="range" name="marks" min=0 max="{{marks}}">
+		<button type="submit">Submit</button>
+	</form>
+{% endblock %}

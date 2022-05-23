@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+	<h2>A page to find a question to do</h2>
+	<table class="question-table">
+		<!--<thead class="question-header">
+			<tr class="question-header-row">
+			{% for heading in questions[0].keys() %}
+				<th class="question-heading">
+					{{heading}}
+				</th>
+			{% endfor %}
+			</tr>
+		</thead>-->
+		{% for question in questions %}
+			<tr class=question-row>
+				{% for key in question.keys() %}
+				<td class="question-item">
+					{{question[key]}}
+				</td>
+				{% endfor %}
+			</tr>
+		{% endfor %}
+	</table>
+{% endblock %}

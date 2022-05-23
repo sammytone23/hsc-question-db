@@ -83,3 +83,18 @@ b{
 .question-img{
 	max-width: 50%;
 }
+
+.short-answer-title{
+	color: var(--text-accent);
+}
+
+.short-answer-text{
+	background: var(--alt-bg-color);
+	padding: 1em 0;
+}
+
+.question-table, .question-row, .question-header, .question-item, .question-heading{
+	background: var(--alt-bg-color);
+	border: 1px solid var(--text-accent);
+	padding: 2px;
+}

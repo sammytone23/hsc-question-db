@@ -2,19 +2,19 @@
 
 {% block content %}
 	<form action="/submit_question/{{ question['question_id'] }}" method="post" id="form">
-		<p class="question-text">{{ question['question'] }}</p>
+		<p class="question-text">{{ question['question'] }}, {{ question['marks'] }} marks</p>
 		{% if question['img'] %}
 			<div class="form-div">
 				<img src="{{ url_for('static', filename='images/'+question['img']) }}" class="question-img">
 			</div>
 		{% endif %}
 		{% if question['multiple_choice'] %}
-			{% for key in question['answer'].keys() %}
+			{% for key in question['answers'].keys() %}
 				<div class="form-div">
 					<label class="multiple_choice-text">
 						{{key}}.
-						<input type="radio" name="answer" class="multiple-choice-button" value="{{ question['answer'][key] }}">
-						{{ question['answer'][key] }}
+						<input type="radio" name="answer" class="multiple-choice-button" value="{{ question['answers'][key] }}">
+						{{ question['answers'][key] }}
 					</p>
 				</div>
 			{% endfor %}
