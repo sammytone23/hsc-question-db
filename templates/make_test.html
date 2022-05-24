@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+	{%if warning%}
+		<p class="warning">{{warning}}</p>
+	{%endif%}
+	<form action='/make_test' method="post" class="checkbox-list-form">
+		<fieldset>
+		<label>Select tag(s)</label>
+		<table class="checkbox-table">
+			{%for tag in tags%}
+				<tr class="checkbox-row">
+					<td class="checkbox-item">
+						<input type="checkbox" name="tags" value="{{tag}}">
+					</td>
+					<td class="checkbox-text">
+						{{tag}}
+					</td>
+				</tr>
+			{%endfor%}
+		</table>
+		<input type="number" min=1 max={{num_questions}} name="test_length">
+		<input type="submit" value="Submit">
+		</fieldset>
+	</form>
+{% endblock %}

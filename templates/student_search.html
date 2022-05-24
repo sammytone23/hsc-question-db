@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+
+{% block content %}
+	{%if warning%}
+		<p class="warning">{{warning}}</p>
+	{%endif%}
+	<p>Enter a specific student id or leave blank for your whole class</p>
+	<form action="/check_test_history" method="post">
+		<input type="number" name="student_id">
+		<input type="submit" name="submit" value="Submit">
+	</form>
+	{%if results%}
+		{%if not student%}
+			<h2>Class: {{results['class']}}</h2>
+			<table>
+				<thead>
+					<tr>
+						<th>
+							Student id
+						</th>
+						<th>
+							No. of tests completed
+						</th>
+						<th>
+							% of possible marks
+						</th>
+					</tr>
+				</thead>
+				{%for result in results['users']%}
+					<tr>
+						<td>
+							{{result['user']}}
+						</td>
+						<td>
+							{{result['test_num']}}
+						</td>
+						<td>
+							{{result['avg_marks']}}
+						</td>
+					</tr>
+				{%endfor%}
+			</table>
+		{%else%}
+			<h2>Student id: {{results['user_id']}}</h2>
+				{%for test in results['tests']%}
+					<table class="marks-table">
+						<thead>
+							<tr>
+								<th>
+									The question asked
+								</th>
+								<th>
+									Your answer
+								</th>
+								<th>
+									The correct answer/marking guide
+								</th>
+								<th>
+									Your mark
+								</th>
+							</tr>
+						</thead>
+						<tbody>
+							{%for question in test['test']%}
+								<tr>
+									<td>
+										{{questions[question['question_id']]['question']}}
+									</td>
+									<td>
+										{{question['submitted_answer']}}
+									</td>
+									<td>
+										{%if questions[question['question_id']]['multiple_choice']%}
+											{{question['correct_answer']}}
+										{%else%}
+											{{question['marking_guide']}}
+										{%endif%}
+									</td>
+									<td>
+										{{question['marks']}}
+									</td>
+								</tr>
+							{%endfor%}
+						</tbody>
+					</table>
+				{%endfor%}
+		{%endif%}
+	{%endif%}
+{% endblock %}

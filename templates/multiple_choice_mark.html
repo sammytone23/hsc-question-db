@@ -4,6 +4,7 @@
 	<p class="multiple-choice-{{ correct }}"> You got the question {{ correct }}. The correct answer was {{ correct_answer }}</p>
 	<form action="/next_question" method="post">
 		<input type="hidden" name="from" value="{{question_id}}">
+		<input type="hidden" name="marks" value=1>
 		<button type="submit">Next</button>
 	</form>
 {% endblock %}
