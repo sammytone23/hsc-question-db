@@ -41,6 +41,48 @@
 		"password": "password",
 		"privileges": "teacher",
 		"class": "IK246B4"
+	}, {
+		"user_id": 7,
+		"username": "teacher",
+		"password": "a",
+		"privileges": "teacher",
+		"class": "3QWN3"
+	}, {
+		"user_id": 8,
+		"username": "student",
+		"password": "a",
+		"privileges": "student",
+		"class": "3QWN3"
+	}, {
+		"user_id": 9,
+		"username": "student2",
+		"password": "a",
+		"privileges": "student",
+		"class": "3QWN3"
+	}, {
+		"user_id": 10,
+		"username": "student3",
+		"password": "a",
+		"privileges": "student",
+		"class": "3QWN3"
+	}, {
+		"user_id": 11,
+		"username": "teacher2",
+		"password": "a",
+		"privileges": "teacher",
+		"class": "WYH7US"
+	}, {
+		"user_id": 12,
+		"username": "teacher3",
+		"password": "a",
+		"privileges": "teacher",
+		"class": "PZ83BE"
+	}, {
+		"user_id": 13,
+		"username": "student4",
+		"password": "a",
+		"privileges": "student",
+		"class": "3QWN3"
 	}],
 	"classes": [{
 		"class": "08P9FJ",
@@ -54,6 +96,15 @@
 	}, {
 		"class": "IK246B4",
 		"users": [6]
+	}, {
+		"class": "3QWN3",
+		"users": [7, 8, 9, 10, 13]
+	}, {
+		"class": "WYH7US",
+		"users": [11]
+	}, {
+		"class": "PZ83BE",
+		"users": [12]
 	}],
 	"questions": [{
 		"question_id": 0,
@@ -156,6 +207,114 @@
 		"marking_guide": "Velit magnam amet sit. Aliquam quisquam quaerat sed magnam ut dolorem sed. Magnam sit numquam neque velit. Sed voluptatem eius aliquam neque. Labore dolore labore ipsum porro ipsum. Quisquam etincidunt est consectetur velit. Consectetur dolor modi est velit quiquia magnam quisquam. Numquam porro non adipisci.",
 		"marks": 1,
 		"img": "pls-give-me-good-marks.jpg"
+	}, {
+		"question": "At which stage of the software development cycle are the needs of the client first identified?",
+		"answers": ["Implementation", "Testing and evaluating", "Planning and designing", "Defining and understanding"],
+		"correct_answer": "Defining and understanding",
+		"img": 0,
+		"question_id": 12,
+		"multiple_choice": 1,
+		"marks": 1,
+		"tags": ["multiple_choice", "2021_HSC"]
+	}, {
+		"question": "A company wants to survey people to find out their top five sources of news. A person can choose up to five options from a list. Which of the following should be used in the survey?",
+		"answers": ["Scroll bars", "Check boxes", "Radio buttons", "Drop-down lists"],
+		"correct_answer": "Check boxes",
+		"img": 0,
+		"question_id": 13,
+		"multiple_choice": 1,
+		"marks": 1,
+		"tags": ["multiple_choice", "2021_HSC"]
+	}, {
+		"question": "A fragment of documentation is shown. What type of documentation is this?",
+		"answers": ["IPO chart", "Storyboard", "Data dictionary", "Context diagram"],
+		"correct_answer": "Data dictionary",
+		"img": "2021-mc-3.png",
+		"question_id": 14,
+		"multiple_choice": 1,
+		"marks": 1,
+		"tags": ["multiple_choice", "2021_HSC"]
+	}, {
+		"question": "Which of the following describes a Creative Commons licence?",
+		"answers": ["It allows distribution of a limited version of the software product.", "It makes software available for use with no intellectual property rights.", "It specifies the maximum legal number of simultaneous users of the software.", "It allows an author to specify how others can share, use and build upon their work."],
+		"correct_answer": "It allows an author to specify how others can share, use and build upon their work.",
+		"img": 0,
+		"question_id": 15,
+		"multiple_choice": 1,
+		"marks": 1,
+		"tags": ["multiple_choice", "2021_HSC"]
+	}, {
+		"question": "Which of the following is an essential feature of event-driven software?",
+		"answers": ["It is coded using a low-level language.", "It has a graphic user interface with buttons.", "The programmer determines the order of execution.", "Inputs are processed to determine what happens next."],
+		"correct_answer": "Inputs are processed to determine what happens next.",
+		"img": 0,
+		"question_id": 16,
+		"multiple_choice": 1,
+		"marks": 1,
+		"tags": ["multiple_choice", "2021_HSC"]
+	}, {
+		"question": "What is the purpose of a sentinel value in a sequential file?",
+		"answers": ["It marks the end of data in the file.", "It identifies a specific item in the file.", "It prevents unauthorised access to the file.", "It indicates the number of items in the file."],
+		"correct_answer": "It marks the end of data in the file.",
+		"img": 0,
+		"question_id": 17,
+		"multiple_choice": 1,
+		"marks": 1,
+		"tags": ["multiple_choice", "2021_HSC"]
+	}, {
+		"question": "In a program, a sequence of statements must be executed at least once. Which control structure will ensure that this occurs?",
+		"answers": ["Binary selection", "Pre-test repetition", "Post-test repetition", "Multiway selection"],
+		"correct_answer": "Post-test repetition",
+		"img": 0,
+		"question_id": 18,
+		"multiple_choice": 1,
+		"marks": 1,
+		"tags": ["multiple_choice", "2021_HSC"]
+	}, {
+		"question": "Consider the following code fragment. Which of the following involves parameter passing?",
+		"answers": ["Line 6 only", "Line 7 only", "Lines 2 and 4", "Lines 6 and 7"],
+		"correct_answer": "Line 6 only",
+		"img": "2021-mc-8.png",
+		"question_id": 19,
+		"multiple_choice": 1,
+		"marks": 1,
+		"tags": ["multiple_choice", "2021_HSC"]
+	}, {
+		"question": "In a complex modular system, module A calls module B. During the testing process, an error message was produced indicating that module A had provided too few parameters for module B to proceed. Which type of error had occurred?",
+		"answers": ["Syntax", "Runtime", "Overflow", "Type mismatch"],
+		"correct_answer": "Runtime",
+		"img": 0,
+		"question_id": 20,
+		"multiple_choice": 1,
+		"marks": 1,
+		"tags": ["multiple_choice", "2021_HSC"]
+	}, {
+		"question": "In a complex modular system, module A calls module B. During the testing process, an error message was produced indicating that module A had provided too few parameters for module B to proceed. Which system modelling tool would best help a developer understand the cause of the error?",
+		"answers": ["Context diagram", "Storyboard", "Structure chart", "System flowchart"],
+		"correct_answer": "Structure chart",
+		"img": 0,
+		"question_id": 21,
+		"multiple_choice": 1,
+		"marks": 1,
+		"tags": ["multiple_choice", "2021_HSC"]
+	}, {
+		"question": "In a project meeting, team members presented their code for others to review and identify errors. Which error detection method was being applied?",
+		"answers": ["Deskchecking", "Program trace", "Single line stepping", "Structured walkthrough"],
+		"correct_answer": "Structured walkthrough",
+		"img": 0,
+		"question_id": 22,
+		"multiple_choice": 1,
+		"marks": 1,
+		"tags": ["multiple_choice", "2021_HSC"]
+	}, {
+		"question": "In an array of records, Members(X).FeesPaid stores whether or not a member has paid their fees. Which row of the table correctly shows the data type for X and the data structure for FeesPaid?",
+		"answers": ["A", "B", "C", "D"],
+		"correct_answer": "",
+		"img": "2021-mc-12",
+		"question_id": 23,
+		"multiple_choice": 1,
+		"marks": 1,
+		"tags": ["multiple_choice", "2021_HSC"]
 	}],
 	"completed_tests": [{
 		"user": 0,
@@ -291,6 +450,314 @@
 			"correct_answer": "9",
 			"submitted_answer": "9",
 			"marks": 1
+		}]
+	}, {
+		"user": 8,
+		"marks": 3,
+		"test": [{
+			"question_id": 16,
+			"correct_answer": "Inputs are processed to determine what happens next.",
+			"submitted_answer": "Inputs are processed to determine what happens next.",
+			"marks": 1
+		}, {
+			"question_id": 15,
+			"correct_answer": "It allows an author to specify how others can share, use and build upon their work.",
+			"submitted_answer": "It allows an author to specify how others can share, use and build upon their work.",
+			"marks": 1
+		}, {
+			"question_id": 17,
+			"correct_answer": "It marks the end of data in the file.",
+			"submitted_answer": "It marks the end of data in the file.",
+			"marks": 1
+		}]
+	}, {
+		"user": 8,
+		"marks": 4,
+		"test": [{
+			"question_id": 17,
+			"correct_answer": "It marks the end of data in the file.",
+			"submitted_answer": "It marks the end of data in the file.",
+			"marks": 1
+		}, {
+			"question_id": 18,
+			"correct_answer": "Post-test repetition",
+			"submitted_answer": "Pre-test repetition",
+			"marks": 0
+		}, {
+			"question_id": 20,
+			"correct_answer": "Runtime",
+			"submitted_answer": "Runtime",
+			"marks": 1
+		}, {
+			"question_id": 16,
+			"correct_answer": "Inputs are processed to determine what happens next.",
+			"submitted_answer": "Inputs are processed to determine what happens next.",
+			"marks": 1
+		}, {
+			"question_id": 21,
+			"correct_answer": "Structure chart",
+			"submitted_answer": "Structure chart",
+			"marks": 1
+		}]
+	}, {
+		"user": 0,
+		"marks": 3,
+		"test": [{
+			"question_id": 18,
+			"correct_answer": "Post-test repetition",
+			"submitted_answer": "Post-test repetition",
+			"marks": 1
+		}, {
+			"question_id": 19,
+			"correct_answer": "Line 6 only",
+			"submitted_answer": "Line 6 only",
+			"marks": 1
+		}, {
+			"question_id": 13,
+			"correct_answer": "Check boxes",
+			"submitted_answer": "Check boxes",
+			"marks": 1
+		}]
+	}, {
+		"user": 0,
+		"marks": 4,
+		"test": [{
+			"question_id": 1,
+			"marking_guide": "up to 3 marks, 0 for a negative opinion, to 3 for a glowing opinion",
+			"submitted_answer": "good",
+			"marks": 3
+		}, {
+			"question_id": 0,
+			"correct_answer": "9",
+			"submitted_answer": "9",
+			"marks": 1
+		}]
+	}, {
+		"user": 9,
+		"marks": 3,
+		"test": [{
+			"question_id": 1,
+			"marking_guide": "up to 3 marks, 0 for a negative opinion, to 3 for a glowing opinion",
+			"submitted_answer": "a",
+			"marks": 2
+		}, {
+			"question_id": 0,
+			"correct_answer": "9",
+			"submitted_answer": "9",
+			"marks": 1
+		}]
+	}, {
+		"user": 9,
+		"marks": 4,
+		"test": [{
+			"question_id": 14,
+			"correct_answer": "Data dictionary",
+			"submitted_answer": "Data dictionary",
+			"marks": 1
+		}, {
+			"question_id": 12,
+			"correct_answer": "Defining and understanding",
+			"submitted_answer": "Implementation",
+			"marks": 0
+		}, {
+			"question_id": 20,
+			"correct_answer": "Runtime",
+			"submitted_answer": "Runtime",
+			"marks": 1
+		}, {
+			"question_id": 22,
+			"correct_answer": "Structured walkthrough",
+			"submitted_answer": "Structured walkthrough",
+			"marks": 1
+		}, {
+			"question_id": 19,
+			"correct_answer": "Line 6 only",
+			"submitted_answer": "Line 6 only",
+			"marks": 1
+		}]
+	}, {
+		"user": 7,
+		"marks": 4,
+		"test": [{
+			"question_id": 1,
+			"marking_guide": "up to 3 marks, 0 for a negative opinion, to 3 for a glowing opinion",
+			"submitted_answer": "good",
+			"marks": 3
+		}, {
+			"question_id": 0,
+			"correct_answer": "9",
+			"submitted_answer": "9",
+			"marks": 1
+		}]
+	}, {
+		"user": 9,
+		"marks": 8,
+		"test": [{
+			"question_id": 17,
+			"correct_answer": "It marks the end of data in the file.",
+			"submitted_answer": "It marks the end of data in the file.",
+			"marks": 1
+		}, {
+			"question_id": 1,
+			"marking_guide": "up to 3 marks, 0 for a negative opinion, to 3 for a glowing opinion",
+			"submitted_answer": "good",
+			"marks": 3
+		}, {
+			"question_id": 20,
+			"correct_answer": "Runtime",
+			"submitted_answer": "Runtime",
+			"marks": 1
+		}, {
+			"question_id": 21,
+			"correct_answer": "Structure chart",
+			"submitted_answer": "Structure chart",
+			"marks": 1
+		}, {
+			"question_id": 15,
+			"correct_answer": "It allows an author to specify how others can share, use and build upon their work.",
+			"submitted_answer": "It allows an author to specify how others can share, use and build upon their work.",
+			"marks": 1
+		}, {
+			"question_id": 16,
+			"correct_answer": "Inputs are processed to determine what happens next.",
+			"submitted_answer": "Inputs are processed to determine what happens next.",
+			"marks": 1
+		}]
+	}, {
+		"user": 9,
+		"marks": 1,
+		"test": [{
+			"question_id": 0,
+			"correct_answer": "9",
+			"submitted_answer": "9",
+			"marks": 1
+		}]
+	}, {
+		"user": 9,
+		"marks": 2,
+		"test": [{
+			"question_id": 1,
+			"marking_guide": "up to 3 marks, 0 for a negative opinion, to 3 for a glowing opinion",
+			"submitted_answer": "good",
+			"marks": 2
+		}]
+	}, {
+		"user": 10,
+		"marks": 4,
+		"test": [{
+			"question_id": 17,
+			"correct_answer": "It marks the end of data in the file.",
+			"submitted_answer": "It marks the end of data in the file.",
+			"marks": 1
+		}, {
+			"question_id": 15,
+			"correct_answer": "It allows an author to specify how others can share, use and build upon their work.",
+			"submitted_answer": "It makes software available for use with no intellectual property rights.",
+			"marks": 0
+		}, {
+			"question_id": 19,
+			"correct_answer": "Line 6 only",
+			"submitted_answer": "Line 6 only",
+			"marks": 1
+		}, {
+			"question_id": 12,
+			"correct_answer": "Defining and understanding",
+			"submitted_answer": "Defining and understanding",
+			"marks": 1
+		}, {
+			"question_id": 14,
+			"correct_answer": "Data dictionary",
+			"submitted_answer": "Data dictionary",
+			"marks": 1
+		}]
+	}, {
+		"user": 10,
+		"marks": 2,
+		"test": [{
+			"question_id": 17,
+			"correct_answer": "It marks the end of data in the file.",
+			"submitted_answer": "It marks the end of data in the file.",
+			"marks": 1
+		}, {
+			"question_id": 21,
+			"correct_answer": "Structure chart",
+			"submitted_answer": "Structure chart",
+			"marks": 1
+		}]
+	}, {
+		"user": 10,
+		"marks": 3,
+		"test": [{
+			"question_id": 1,
+			"marking_guide": "up to 3 marks, 0 for a negative opinion, to 3 for a glowing opinion",
+			"submitted_answer": "good",
+			"marks": 3
+		}]
+	}, {
+		"user": 10,
+		"marks": 4,
+		"test": [{
+			"question_id": 18,
+			"correct_answer": "Post-test repetition",
+			"submitted_answer": "Post-test repetition",
+			"marks": 1
+		}, {
+			"question_id": 12,
+			"correct_answer": "Defining and understanding",
+			"submitted_answer": "Defining and understanding",
+			"marks": 1
+		}, {
+			"question_id": 14,
+			"correct_answer": "Data dictionary",
+			"submitted_answer": "Data dictionary",
+			"marks": 1
+		}, {
+			"question_id": 22,
+			"correct_answer": "Structured walkthrough",
+			"submitted_answer": "Single line stepping",
+			"marks": 0
+		}, {
+			"question_id": 16,
+			"correct_answer": "Inputs are processed to determine what happens next.",
+			"submitted_answer": "Inputs are processed to determine what happens next.",
+			"marks": 1
+		}]
+	}, {
+		"user": 10,
+		"marks": 3,
+		"test": [{
+			"question_id": 1,
+			"marking_guide": "up to 3 marks, 0 for a negative opinion, to 3 for a glowing opinion",
+			"submitted_answer": "good",
+			"marks": 3
+		}]
+	}, {
+		"user": 13,
+		"marks": 3,
+		"test": [{
+			"question_id": 17,
+			"correct_answer": "It marks the end of data in the file.",
+			"submitted_answer": "It marks the end of data in the file.",
+			"marks": 1
+		}, {
+			"question_id": 18,
+			"correct_answer": "Post-test repetition",
+			"submitted_answer": "Post-test repetition",
+			"marks": 1
+		}, {
+			"question_id": 14,
+			"correct_answer": "Data dictionary",
+			"submitted_answer": "Data dictionary",
+			"marks": 1
+		}]
+	}, {
+		"user": 13,
+		"marks": 3,
+		"test": [{
+			"question_id": 1,
+			"marking_guide": "up to 3 marks, 0 for a negative opinion, to 3 for a glowing opinion",
+			"submitted_answer": "good",
+			"marks": 3
 		}]
 	}]
 }

@@ -28,10 +28,11 @@
 					<td>
 						{{question['submitted_answer']}}
 					</td>
-					<td>
 						{%if questions[question['question_id']]['multiple_choice']%}
+						<td>
 							{{question['correct_answer']}}
 						{%else%}
+						<td class="marking_guide">
 							{{question['marking_guide']}}
 						{%endif%}
 					</td>

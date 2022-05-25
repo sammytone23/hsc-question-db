@@ -12,11 +12,14 @@
 	{%if results%}
 		{%if not student%}
 			<h2>Class: {{results['class']}}</h2>
-			<table>
+			<table class="marks-table">
 				<thead>
 					<tr>
 						<th>
 							Student id
+						</th>
+						<th>
+							Student Username
 						</th>
 						<th>
 							No. of tests completed
@@ -30,6 +33,9 @@
 					<tr>
 						<td>
 							{{result['user']}}
+						</td>
+						<td>
+							{{users[result['user']]['username']}}
 						</td>
 						<td>
 							{{result['test_num']}}

@@ -1,19 +1,14 @@
 {% extends "base.html" %}
 
 {% block content %}
-	<h2> This is a home page what where explaining happens </h2>
-	{% if session['reply'] -%}
-		<div class='b'>
-			<b>{{ session['reply'] }}</b>
-		</div>
-	{% endif %}
-	<form action="/is_correct" method="post" id="form">
-		<div class="form-div">
-			<input type="text" name="thing" class="in-form">
-		</div>
-		<div class="form-div">
-			<button type="submit" class="in-form">submit</button>
-		</div>
-	</form>
+	<h1>Welcome to the hsc question database</h1>
 
+	{%if user%}
+	<div>
+		<p class="home-info">
+			<span class="user-id">Your user id is: {{user['user_id']}}</span>
+			<span class="user-class">Your class is: {{user['class']}}</span>
+		</p>
+	</div>
+	{%endif%}
 {% endblock %}

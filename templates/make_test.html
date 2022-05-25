@@ -19,7 +19,10 @@
 				</tr>
 			{%endfor%}
 		</table>
-		<input type="number" min=1 max={{num_questions}} name="test_length">
+		<label>
+			Number of questions
+			<input type="number" min=1 max={{num_questions}} name="test_length">
+		</label>
 		<input type="submit" value="Submit">
 		</fieldset>
 	</form>

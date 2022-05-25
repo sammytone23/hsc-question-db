@@ -11,7 +11,7 @@ app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
 Session(app)
 
-
+#function to render an apology when a user messes up
 def apology(message, code=400):
 	"""Render message as an apology to user."""
 	def escape(s):
@@ -26,13 +26,18 @@ def apology(message, code=400):
 		return s
 	return render_template("apology.html", apology_message=f'{code}, '+escape(message), heading='Error: '+str(code), session=session), code
 
+# function to set what pages a user can see when they login/register
 def update_pages_list(user):
 	pages={'home':'/home','logout':'/logout', 'random question':'/random', 'make a test':'/make_test'}
 	if user['privileges'] in ['teacher','admin']:
-		pages['question list']='/question'
+		# pages['question list']='/question'
 		pages['check test history']='/check_test_history'
 	return pages
 
+# a function called when a user is registered
+# uses the global 'request' from the form input to get the details of the user
+# then generates a unique class code if one was not provided
+# then puts that data into the fake_db object and returns it
 def create_user(fake_db):
 	user_id=fake_db['logins'][-1]['user_id']+1
 	
@@ -56,45 +61,52 @@ def create_user(fake_db):
 	
 	user={"user_id":user_id,"username":request.form.get('username'),"password":request.form.get('password'),"privileges":request.form.get('user-type'),"class":class_code}
 	fake_db['logins'].append(user)
+	return fake_db,user_id
 
+# 'before_request' means this code executes before the user sees any page
+# checks if the user has been initialised, if not resets their session so that all the correct pages exist
 @app.before_request
 def before_request():
-	try:
-		session['pages']
-	except:
+	if 'pages' not in session.keys():
 		reset_session()
 
+# a function that ensures any form submissions are not cached
 @app.after_request
 def after_request(response):
-	"""Ensure responses aren't cached"""
 	response.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
 	response.headers["Expires"] = 0
 	response.headers["Pragma"] = "no-cache"
 	return response
 
+# testing route '/session' that displays the session variable
 @app.route('/session')
 def display_session():
 	return str(session)
 	
+# a route, whose function can be called independently, for the purpose of reseting the session, or setting up the session variable so the pages are displayed correctly
 @app.route('/reset')
 def reset_session():
 	session.clear()
 	session['pages']={'home':'/home','login':'/login', 'register':'/register'}
-	return redirect('/')
+	return redirect('/home')
 
+# landing route that resets the session and redirects to '/home', the intended way for the user to enter the site
 @app.route('/')
 def landing():
 	reset_session()
 	return redirect('/home')
 
+# home page that displays some info about the user
 @app.route("/home")
 def home():
-	"""Home page"""
+	with open('static/fake_db.json') as f:
+		fake_db=json.load(f)
+	user=False
+	if 'user' in session.keys():
+		user=fake_db['logins'][session['user']]
+	return render_template('home.html', heading="This is a home page", session=session, user=user)
 
-	# pages={'hello':'/','world':'/'}
-	# print(session)
-	return render_template('home.html', heading="This is a home page", session=session)
-
+# a function to display the login form on a normal access, but also to check login info when the form is submitted with a 'post' request, and log the user in if info is correct.
 @app.route('/login', methods=['GET','POST'])
 def login():
 	if request.method=="POST":
@@ -120,11 +132,12 @@ def login():
 
 	return render_template('login.html', heading='login', session=session)
 
+# a function that simply resets the session to log out a user
 @app.route('/logout')
 def logout():
 	return redirect('/')
-	return fake_db,user_id
 
+# a function to display the register 
 @app.route("/register", methods=['GET','POST'])
 def register():
 
@@ -148,37 +161,51 @@ def register():
 		elif not request.form.get("confirmation")==request.form.get("password"):
 			return apology("password and confirmation must match", 403)
 
+		# Open the fake database file and store it as an object in the variable fake_db
 		with open('static/fake_db.json') as f:
 			fake_db=json.load(f)
 
+		# Ensure username not already in use
 		for user in fake_db['logins']:
 			if request.form.get('username')==user['username']:
 				return apology('username taken', 403)
 		
+		# Create the user with the 'create_user' function
 		fake_db,user_id=create_user(fake_db)
+
+		# Store the user's id in the session
 		session['user']=user_id
+
+		# Write the the added user into the fake database file
 		with open('static/fake_db.json','w') as f:
 			json_object=json.dumps(fake_db)
 			f.write(json_object)
+
+		# Write the pages the user should be able to see into the session
 		session['pages']=update_pages_list(user)
 
+		# Display the 'registered' html page
 		return render_template('registered.html', heading="Registered", session=session)
 
+	# Display the register page form
 	return render_template('register.html', heading='Register', session=session)
 
+# Provides the user with a random question
 @app.route('/random')
 def random_question():
 	with open('static/fake_db.json') as f:
 		fake_db=json.load(f)
 	return redirect('/question/'+str(random.randint(0,len(fake_db['questions'])-1)))
 
-@app.route('/question')
-def find_question():
-	with open('static/fake_db.json') as f:
-		fake_db=json.load(f)
+# Page that gives the user a table with info on every question, removing from final
+# @app.route('/question')
+# def find_question():
+# 	with open('static/fake_db.json') as f:
+# 		fake_db=json.load(f)
 
-	return render_template('question_list.html', questions=fake_db['questions'], heading="Question list", session=session)
+# 	return render_template('question_list.html', questions=fake_db['questions'], heading="Question list", session=session)
 
+# a function to display the form for a user to complete a specific question, either in a test or randomly
 @app.route('/question/<question_id>', methods=['GET','POST'])
 def question(question_id):
 	with open('static/fake_db.json') as f:
@@ -193,6 +220,7 @@ def question(question_id):
 		question['answers']={chr(ord('a')+p):answer for p,answer in enumerate(question['answers'])}
 	return render_template('question.html',heading='Question',session=session,question=question)
 
+# This is the path that the form for the submission of a question sends its results to, to be marked and stored in the fake database
 @app.route('/submit_question/<question_id>', methods=['POST'])
 def submit_question(question_id):
 	with open('static/fake_db.json') as f:
@@ -208,14 +236,17 @@ def submit_question(question_id):
 		if question['correct_answer']==request.form.get('answer'):
 			correct='correct'
 		
-		session['submitted'].append({'question_id':int(question_id), 'correct_answer':question['correct_answer'], 'submitted_answer':request.form.get('answer'), 'marks':1 if correct=='correct' else 0})
+		if 'in_test' in session.keys():
+			session['submitted'].append({'question_id':int(question_id), 'correct_answer':question['correct_answer'], 'submitted_answer':request.form.get('answer'), 'marks':1 if correct=='correct' else 0})
 
 		return render_template('multiple_choice_mark.html', heading='Marks', session=session, correct=correct, correct_answer=question['correct_answer'], question_id=question_id)
 	
 	else:
-		session['submitted'].append({'question_id':int(question_id), 'marking_guide':question['marking_guide'], 'submitted_answer':request.form.get('answer')})
+		if 'in_test' in session.keys():
+			session['submitted'].append({'question_id':int(question_id), 'marking_guide':question['marking_guide'], 'submitted_answer':request.form.get('answer')})
 		return render_template('short_answer_mark.html', heading='Marks', session=session, warning=False, answer=request.form.get('answer'), marking_guide=question['marking_guide'], marks=question['marks'], question_id=question_id)
 
+# This is the route the user is redirected to when they finish a question in a test, it checks if they have test left to do and if not displays the final marks page
 @app.route('/next_question', methods=['GET', 'POST'])
 def next_question():
 	with open('static/fake_db.json') as f:
@@ -234,6 +265,7 @@ def next_question():
 			return redirect('/test_marks')
 	return redirect('/home')
 
+# This is the page the user is shown when they complete a test, it displays their final marks and also how they did on each individual question.
 @app.route('/test_marks')
 def test_marks():
 	with open('static/fake_db.json') as f:
@@ -251,6 +283,7 @@ def test_marks():
 		return render_template('test_marks.html', heading="Test results", session=session, test=test, questions=fake_db['questions'])
 	return redirect('/home')
 
+# A simple function to generate a test with the parameters given by the user, or display an error if this is not possibles
 def make_test(length, tags):
 	with open('static/fake_db.json') as f:
 		fake_db=json.load(f)
@@ -267,14 +300,16 @@ def make_test(length, tags):
 	if len(possible_questions)<int(length):
 		return apology('Error: not enough questions with the chosen tag'+'s' if len(tags)>1 else '')
 	else:
-		choices=random.choices(possible_questions,k=int(length))
+		choices==[]
+		for i in range(length):
+			choices.append(possible_questions.pop(random.randint(0,len(possible_questions)-1)))
 		session['in_test']=True
 		session['test_questions']=choices
 		session['test_marks']=0
 		session['submitted']=[]
 		return redirect('/next_question')
 
-
+# The route the user uses to create a new test randomly from a set of tags
 @app.route('/make_test', methods=['GET','POST'])
 def set_test(questions=[]):
 	with open('static/fake_db.json') as f:
@@ -291,6 +326,7 @@ def set_test(questions=[]):
 
 	return render_template('make_test.html', heading="Test yourself", session=session, tags=tags, num_questions=len(fake_db['questions']), warning=False)
 
+# A function to gather the test statistics of a user given their id
 def get_user_stats(user_id):
 	with open('static/fake_db.json') as f:
 		fake_db=json.load(f)
@@ -308,11 +344,13 @@ def get_user_stats(user_id):
 	else:
 		return{'user':user_id,'test_num':0,'avg_marks':0}
 
-
+# A page for any teacher to check the test statistics of those in their class, or a specific user's specific results, and for an admin to do that with anyone
 @app.route('/check_test_history', methods=['GET','POST'])
 def check_test_history():
 	with open('static/fake_db.json') as f:
 		fake_db=json.load(f)
+	if fake_db['logins'][session['user']]['privileges']=='student':
+		return redirect('/home')
 	if request.method=='POST':
 		if request.form.get('student_id'):
 			student_id=int(request.form.get('student_id'))
@@ -332,7 +370,9 @@ def check_test_history():
 
 	return render_template('student_search.html', heading="View test results", session=session, results=False, student=False, warning=False)
 
-
+# @app.route('/add_question', methods=['GET', 'POST'])
+# def add_question():
+# 	return render_template('add_page.html', heading='Add Page', session=session)
 
 if __name__ == '__main__':
 	app.run(host='0.0.0.0', port=5000)

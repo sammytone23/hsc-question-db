@@ -128,3 +128,40 @@ table, tr, th, td{
 .checkbox-text{
 	text-align: right;
 }
+
+.home-info{
+	width: 100%;
+}
+
+.user-id, .user-class{
+	width: 50%;
+	color: var(--text-bold);
+}
+.user-id{
+	text-align: left;
+	/*margin-left: 30px;*/
+	position: absolute;
+	left: 30px;
+}
+
+.user-class{
+	text-align: right;
+	/*margin-right: 30px;*/
+	position: absolute;
+	right: 30px;
+}
+
+.marks-table{
+	margin: auto;
+	margin-top: 20px;
+}
+
+form{
+	margin-bottom: 20px;
+}
+input{
+	background: var(--alt-bg-color);
+}
+.marking_guide{
+	background: var(--background-color);
+}
