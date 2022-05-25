@@ -78,11 +78,6 @@ def after_request(response):
 	response.headers["Expires"] = 0
 	response.headers["Pragma"] = "no-cache"
 	return response
-
-# testing route '/session' that displays the session variable
-@app.route('/session')
-def display_session():
-	return str(session)
 	
 # a route, whose function can be called independently, for the purpose of reseting the session, or setting up the session variable so the pages are displayed correctly
 @app.route('/reset')
