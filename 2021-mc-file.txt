@@ -1,0 +1,79 @@
+
+1 At which stage of the software development cycle are the needs of the client first identified?
+A. Implementation
+B. Testing and evaluating
+C. Planning and designing
+D. Defining and understanding
+
+2 A company wants to survey people to find out their top five sources of news. A person can choose up to five options from a list. Which of the following should be used in the survey?
+A. Scroll bars
+B. Check boxes
+C. Radio buttons
+D. Drop-down lists
+
+3 A fragment of documentation is shown.
+<<"2021-mc-3.png">>
+What type of documentation is this?
+A. IPO chart
+B. Storyboard
+C. Data dictionary
+D. Context diagram
+
+4 Which of the following describes a Creative Commons licence?
+A. It allows distribution of a limited version of the software product.
+B. It makes software available for use with no intellectual property rights.
+C. It specifies the maximum legal number of simultaneous users of the software.
+D. It allows an author to specify how others can share, use and build upon their work.
+
+5 Which of the following is an essential feature of event-driven software?
+A. It is coded using a low-level language.
+B. It has a graphic user interface with buttons.
+C. The programmer determines the order of execution.
+D. Inputs are processed to determine what happens next.
+
+6 What is the purpose of a sentinel value in a sequential file?
+A. It marks the end of data in the file.
+B. It identifies a specific item in the file.
+C. It prevents unauthorised access to the file.
+D. It indicates the number of items in the file.
+
+7 In a program, a sequence of statements must be executed at least once. Which control structure will ensure that this occurs?
+A. Binary selection
+B. Pre-test repetition
+C. Post-test repetition
+D. Multiway selection
+
+8 Consider the following code fragment.
+<<"2021-mc-8.png">>
+Which of the following involves parameter passing?
+A. Line 6 only
+B. Line 7 only
+C. Lines 2 and 4
+D. Lines 6 and 7
+<<for 9 10>>
+In a complex modular system, module A calls module B. During the testing process, an error message was produced indicating that module A had provided too few parameters for module B to proceed.
+
+9 Which type of error had occurred?
+A. Syntax
+B. Runtime
+C. Overflow
+D. Type mismatch
+
+10 Which system modelling tool would best help a developer understand the cause of the error?
+A. Context diagram
+B. Storyboard
+C. Structure chart
+D. System flowchart
+
+11 In a project meeting, team members presented their code for others to review and identify errors. Which error detection method was being applied?
+A. Deskchecking
+B. Program trace
+C. Single line stepping
+D. Structured walkthrough
+
+12 In an array of records, Members(X).FeesPaid stores whether or not a member has paid their fees. Which row of the table correctly shows the data type for X and the data structure for FeesPaid?
+<<"2021-mc-12">>
+A. A
+B. B
+C. C
+D. D
